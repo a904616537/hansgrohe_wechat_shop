@@ -1,0 +1,69 @@
+{
+	"login" : {
+		"mobile" : "MOBILE PHONE NUMBER",
+		"code"   : "CODE",
+		"sms"    : "GET SMS",
+		"login"  : "LOGIN",
+		"regist" : "Register",
+		"language" : "Switch language："
+	},
+	"nav" : {
+		"home"     : "Home Page",
+		"shopping" : "Shopping Page",
+		"user"     : "User Profile",
+		"cart"     : "Shopping Cart"
+	},
+	"product" : {
+		"no"          : "Product No：",
+		"surface"     : "Surface：Chrome Plated",
+		"area"        : "Shanghai",
+		"technology"  : "Technology",
+		"technology1" : "More pleasure, more efficiency",
+		"technology2" : "Excellent operating comfort",
+		"technology3" : "Quick descaling function",
+		"technology4" : "Intuitive spray mode switches",
+		"charact"     : "Product Characteristics",
+		"charact1"    : "300 ComfortZone comfortable space",
+		"charact2"    : "Water mouth rotation range: level 3 is set to 110 °, 150 ° or 360 °",
+		"charact3"    : "Normal mode",
+		"charact4"    : "The Select button: open or close the comfort and convenience of the water",
+		"award"       : "Award",
+		"add"         : "Add to Cart",
+		"buy"         : "Buy Now"
+	},
+	"confirm" : {
+		"material" : "Select Material",
+		"qty"      : "Purchase Quantity",
+		"confirm"  : "Confirm"
+	},
+	"cart" : {
+		"all"      : "All Selected",
+		"total"    : "Total Amount",
+		"checkout" : "Checkout"
+	},
+	"profile" : {
+		"history" : "Order History",
+		"address" : "Address Book",
+		"service" : "Customer Service",
+		"logout"  : "Log Out"
+	},
+	"payment" : {
+		"address"  : "Address",
+		"msg"      : "Leave a Message",
+		"textarea" : "(No more than 100 words)",
+		"total"    : "Total Amount",
+		"payment"  : "Payment"
+	},
+	"order" : {
+		"total"    : "Total Amount",
+		"progress" : "In Progress",
+		"all"      : "All Orders"
+	},
+	"info" : {
+		"total"   : "Total Amount",
+		"address" : "Delivery Infomation",
+		"msg"     : "Buyer Message",
+		"no"      : "Order NO.",
+		"time"    : "Order Time"
+	}
+}

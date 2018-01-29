@@ -1,0 +1,69 @@
+{
+	"login" : {
+		"mobile"   : "手机号码",
+		"code"     : "验证吗",
+		"sms"      : "获取短信",
+		"login"    : "登录",
+		"regist"   : "注册",
+		"language" : "切换语言："
+	},
+	"nav" : {
+		"home"     : "首页",
+		"shopping" : "商城",
+		"user"     : "个人中心",
+		"cart"     : "购物车"
+	},
+	"product" : {
+		"no"          : "产品序列号：",
+		"surface"     : "材料：镀铬",
+		"area"        : "上海",
+		"technology"  : "产品技术",
+		"technology1" : "更多乐趣,更为高效",
+		"technology2" : "优良便捷性操作",
+		"technology3" : "快速除垢功能",
+		"technology4" : "直观喷雾式开关",
+		"charact"     : "产品性能",
+		"charact1"    : "300 ComfortZone舒适区",
+		"charact2"    : "出水口旋转范围: 110 °, 150 ° or 360 °",
+		"charact3"    : "普通模式",
+		"charact4"    : "选择按钮: 打开或关闭水",
+		"award"       : "获奖",
+		"add"         : "加入购物车",
+		"buy"         : "立即购买"
+	},
+	"confirm" : {
+		"material" : "选择材料",
+		"qty"      : "采购数量",
+		"confirm"  : "确定"
+	},
+	"cart" : {
+		"all"      : "选择全部",
+		"total"    : "总金额",
+		"checkout" : "确认"
+	},
+	"profile" : {
+		"history" : "历史订单",
+		"address" : "地址簿",
+		"service" : "客户服务",
+		"logout"  : "登出"
+	},
+	"payment" : {
+		"address"  : "地址",
+		"msg"      : "备注",
+		"textarea" : "(不超过100个字)",
+		"total"    : "总金额",
+		"payment"  : "支付"
+	},
+	"order" : {
+		"total"    : "总金额",
+		"progress" : "进行中",
+		"all"      : "所有订单"
+	},
+	"info" : {
+		"total"   : "总金额",
+		"address" : "送货地址",
+		"msg"     : "备注",
+		"no"      : "订单号",
+		"time"    : "下单时间"
+	}
+}
