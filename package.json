@@ -66,5 +66,15 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a904616537/hansgrohe_wechat_shop.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/a904616537/hansgrohe_wechat_shop/issues"
+  },
+  "homepage": "https://github.com/a904616537/hansgrohe_wechat_shop#readme"
 }
