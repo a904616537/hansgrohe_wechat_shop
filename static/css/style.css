@@ -323,11 +323,12 @@ textarea:-ms-input-placeholder {
 	height  : 105px;
 }
 .cart-img{
-	width         : 135px;
-	height        : 105px;
-	border-radius : 10px;
-	overflow      : hidden;
-	text-align    : center;
+	width            : 135px;
+	height           : 105px;
+	border-radius    : 10px;
+	overflow         : hidden;
+	text-align       : center;
+	background-color : #fff;
 }
 .cart-img .img-style{
 	height : 105px;
@@ -446,6 +447,7 @@ textarea:-ms-input-placeholder {
 	overflow : hidden;
 	resize   : none;
 	outline  : none;
+	border   : none;
 	color    : #2c3e50;
 }
 .payment .payment-bottom{

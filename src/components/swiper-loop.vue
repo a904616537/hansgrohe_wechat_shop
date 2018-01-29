@@ -1,5 +1,5 @@
 <!-- 卡片轮播图 （element ui） -->
-<template>
+<template style="z-index: -1">
   	<el-carousel :interval="4000" type="card" height="250px" :autoplay="false" arrow="always" indicator-position="none" class="swiper-loop clearfloat">
 	    <el-carousel-item v-for="item in 3" :key="item">
 	    	<img src="static/imgs/filter.png" class="el-img">
@@ -25,6 +25,7 @@
 <style>
 	.swiper-loop{
 		padding : 5px 30px 5px 10px;
+		z-index : 0;
 	}
 	.swiper-loop .el-img{
 		height : 200px;
@@ -52,7 +53,8 @@
 		border-radius    : 8px;
 		box-shadow       : 0px 2px 6px rgba(0,0,0,.4);
   	}
-  	.el-carousel__arrow--right{
-		right : 0px;
+  	button.el-carousel__arrow--right,button.el-carousel__arrow--left{
+		outline : none;
+		right   : 0px;
   	}
 </style>
