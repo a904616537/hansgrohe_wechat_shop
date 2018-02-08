@@ -43,7 +43,7 @@
 <style>
 	.swiper .inner{
 		background-color : #fff;
-		height           : 150px;
+		height           : 214px;
 		width            : 100%;
 	}
 	.swiper .imgbg{

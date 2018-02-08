@@ -29,6 +29,21 @@
 				</div>
 			</div>
 		</div>
+		<div class="info-padding border-bottom">
+			安装
+			<div class="pick-input">
+				<div class="checked-input">
+					<input type="radio" id="yes" value="yes" v-model="picked">
+					<label for="one"></label>
+					<span>Yes</span>
+				</div>
+				<div class="checked-input">
+					<input type="radio" id="no" value="no" v-model="picked">
+					<label for="two"></label>
+					<span>No</span>
+				</div>
+			</div>
+		</div>
 		<div class="info-padding border-bottom clearfloat">
 			{{ $t('payment.address') }}<i class="iconfont float-right" @click="toAddress">&#xe622</i>
 			<p class="info-style">Shanghai jing 'an district kangding road 1018 from pavilion building the second floor</p>
@@ -50,7 +65,7 @@
 		name : 'payment',
 		data() {
 			return {
-				
+				picked  : ''
 			}
 		},
 		methods : {
@@ -63,3 +78,6 @@
 		}
 	}
 </script>
+<style>
+
+</style>

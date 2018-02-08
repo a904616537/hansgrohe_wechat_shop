@@ -472,6 +472,9 @@ textarea:-ms-input-placeholder {
 	text-align       : center;
 	color            : #fff;
 }
+.payment .checked-input{
+	display : inline-block;
+}
 
 
 
