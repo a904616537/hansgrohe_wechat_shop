@@ -13,6 +13,12 @@
 		"user"     : "User Profile",
 		"cart"     : "Shopping Cart"
 	},
+	"home" : {
+		"title" : "Hansgrohe",
+		"text1" : "As part of the internationally active Hansgrohe Group, hansgrohe is the premium brand for showers, shower systems, bathroom and kitchen taps, as well as kitchen sinks. With its many award-winning products, hansgrohe shapes the flow of water in the kitchen and the bathroom. Because this is where people spend the time they treasure most and experience precious moments in the interaction with water. With these moments in mind, hansgrohe develops ground-breaking solutions that unite extraordinary design, long-lasting quality and intelligent features for maximum ease of use. hansgrohe turns water into an impressive experience.",
+ 		"text2" : "hansgrohe. Meet the beauty of water.",
+ 		"enter" : "ENTER STORE"
+  	},
 	"product" : {
 		"no"          : "Product No：",
 		"surface"     : "Surface：Chrome Plated",
@@ -52,7 +58,9 @@
 		"msg"      : "Leave a Message",
 		"textarea" : "(No more than 100 words)",
 		"total"    : "Total Amount",
-		"payment"  : "Payment"
+		"payment"  : "Payment",
+		"install"  : "Installation",
+		"tips"     : "* If you’d like professional installation service, pls call this hotline: 12345678. The cost is not included in the price. Service cost range: 80 - 90 rmb (depending on location)"
 	},
 	"order" : {
 		"total"    : "Total Amount",

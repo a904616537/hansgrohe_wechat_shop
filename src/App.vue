@@ -14,7 +14,7 @@
         name: 'app',
         data() {
             return {
-
+                
             }
         },
         computed : mapState({

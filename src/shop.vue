@@ -1,16 +1,14 @@
 <!-- 首页商品列表 -->
 <template>
-	<div class="home">
+	<div class="shop">
 		<v-nav></v-nav>
 		<!-- 轮播图 -->
-		<img src="static/imgs/bg1.jpg" class="home-img" />
-		<div class="home-content">
-			<!-- 品牌介绍 -->
-			<p>{{ $t('home.title') }}</p>
-			<p>{{ $t('home.text1') }}</p>
-			<p>{{ $t('home.text2') }}</p>
+		<v-swiper></v-swiper>
+		<div class="shop-content">
+			<!-- 商品循环 -->
+			<v-shoppingList></v-shoppingList>
 		</div>
-		<router-link to="/shop"><div class="store">{{ $t('home.enter') }}</div></router-link>
+
 	</div>
 </template>
 
@@ -19,7 +17,7 @@
 	import Swiper       from '@/components/swiper'
 
 	export default{
-		name : 'home',
+		name : 'shop',
 		data() {
 			return {
 				show   : true
