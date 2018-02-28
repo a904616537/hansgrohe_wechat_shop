@@ -4,15 +4,15 @@
 		<div class="mask">
 			<div class="confirm-box clearfloat">
 				<div class="confirm-inner">
-					<img src="static/imgs/water-purifier.jpg" alt= "" class="confirm-img">
+					<img :src="data.img" alt= "" class="confirm-img">
 					<div class="confirm-icon" @click="onClose"><i class="iconfont confirm-icon">&#xe695</i></div>
-					<div class="card-price">$ 999.00</div>
-					<div class="text-style">{{ $t('confirm.material') }}</div>
+					<div class="card-price">$ {{data.price}}</div>
+					<!-- <div class="text-style">{{ $t('confirm.material') }}</div>
 					<select v-model="material" class="pub-input select-input">
 		                <option disabled value="">Surface: Chrome Plated</option>
 		                <option value="1">Surface: select2</option>
 		                <option value="2">Surface: select3</option>
-		            </select>
+		            </select> -->
 		            <div class="text-style">
 		            	{{ $t('confirm.qty') }}
 						<div class="num">
@@ -22,7 +22,7 @@
 						</div>
 		            </div>
 				</div>
-	        	<div class="confirm-btn" @click="onAdd">{{ $t('confirm.confirm') }}</div> 
+	        	<div class="confirm-btn" @click="onAdd(count)">{{ $t('confirm.confirm') }}</div> 
 			</div>
 
 		</div>
@@ -38,13 +38,22 @@
 			}
 		},
 		props : {
+			data : {
+				type : Object,
+				default : () => {
+					return {
+						img : 'static/imgs/water-purifier.jpg',
+						price : 99.00,
+					}
+				}
+			},
 			onClose : {
 				type    : Function,
 				default : () => console.log('onClose')
 			},
 			onAdd : {
 				type    : Function,
-				default : () => console.log('onAdd')
+				default : (count) => console.log('onAdd')
 			}
 		},
 		methods : {

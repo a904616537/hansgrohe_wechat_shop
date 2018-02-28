@@ -1,9 +1,17 @@
 <!-- 卡片轮播图 （element ui） -->
 <template style="z-index: -1">
-  	<el-carousel :interval="4000" type="card" height="250px" :autoplay="false" arrow="always" indicator-position="none" class="swiper-loop clearfloat">
-	    <el-carousel-item v-for="item in 3" :key="item">
-	    	<img src="static/imgs/filter.png" class="el-img">
-	    	<p class="swiper-text">Tails Select S <span class="float-right">$ 999</span></p>
+  	<el-carousel
+  	:interval="4000"
+  	type="card"
+  	height="250px"
+  	:autoplay="false"
+  	@change="onChange"
+  	arrow="always"
+  	indicator-position="none"
+  	class="swiper-loop clearfloat">
+	    <el-carousel-item v-for="(item, index) in data || []" :key="index">
+	    	<img :src="item.img" class="el-img">
+	    	<p class="swiper-text">{{item.name}}<span class="float-right">$ {{item.price}}</span></p>
 	    </el-carousel-item>
   	</el-carousel>
 </template>
@@ -18,6 +26,18 @@
 		data () {
 			return {
 
+			}
+		},
+		props : {
+			data : {
+				type    : Array,
+				default : () => {
+					return [{img : 'static/imgs/filter.png', name : 'Tails Select S', price : 999}]
+				}
+			},
+			onChange : {
+				type    : Function,
+				default : (index) => console.log('onChange index', index)
 			}
 		}
 	}

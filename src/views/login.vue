@@ -20,7 +20,9 @@
 
 <script>
 	import Vue                    from 'vue'
+	import axios                  from 'axios'
 	import {mapState, mapActions} from 'vuex'
+	import Cookie                 from 'vue-cookie'
 
 	export default{
 		name : 'login',
@@ -30,6 +32,7 @@
 				count : '',
 				phone : '',
 				code  : '',
+				getcode : '',
 				timer : null,
 				lang  : 'en' ? '中文' : 'English'
 			}
@@ -41,7 +44,8 @@
 		},
 		methods: {
 			...mapActions([
-	            'SetLanguage'
+	            'SetLanguage',
+	            'onLogin'
 	        ]),
 			langeChange() {
 				if(this.lang == 'English') {
@@ -56,6 +60,12 @@
 			},
 			getCode() {
 				// 获取sms
+				axios.get(Vue.config.network + '/user/sms?phone=' + this.phone)
+				.then((response) => {
+					console.log('response', response)
+					this.getcode = response.data.code;
+				})
+				.catch((error) => {});
 				const time = 60;
 				if(!this.timer){
 					this.count = time;
@@ -73,11 +83,27 @@
 			},
 			toLogin() {
 				// 点击登录
-				if(this.phone != '' || this.code != '')
-				this.$router.push({path: '/home'})
+				if(this.phone.trim() != '' || this.code.trim() != '') {
+					if(this.code.trim() == this.getcode) {
+						const model = {phone : this.phone};
+						axios.post(Vue.config.network + '/member', model)
+						.then((response) => {
+							console.log('login response', response)
+							this.$store.dispatch('onLogin', {user: response.data.user, token: response.data.token});
+							Cookie.set('user-token', response.data.token)
+							Cookie.set('user', JSON.stringify(response.data.user))
+							this.$router.push({path: '/home'})
+						})
+						.catch((error) => {
+							console.log('error', error)
+							alert('登陆失败！')
+						});
+					}
+				}
 			},
 			toRegist() {
 				// 点击注册
+				
 			},
 		}
 	}

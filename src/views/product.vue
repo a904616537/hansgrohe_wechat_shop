@@ -2,11 +2,11 @@
 <template>
 	<div class="product">
 		<!-- <div class="swiper">swiper</div> -->
-		<swiper-loop></swiper-loop>
+		<swiper-loop :data="product.item" :onChange="onChange"></swiper-loop>
 		<div class="product-title clearfloat border-bottom">
 			<div class="product-left">
-				<span>{{ $t('product.no') }} 72820000</span>
-				<span>{{ $t('product.surface') }}</span>
+				<span>{{ $t('product.no') }} {{product.product_no}}</span>
+				<span>{{ $t('product.surface') }} {{product.surface}}</span>
 			</div>
 			<div class="product-right">
 				<span><i class="iconfont">&#xe676;</i> {{ $t('product.area') }}</span>
@@ -65,10 +65,13 @@
 		</div>
 
 		<!--  商品详情选择 弹框  -->
-		<v-confirm :onClose="onClose" :onAdd="onAdd" v-show="isShowComfilm"></v-confirm>
+		<v-confirm :data="select_item" :onClose="onClose" :onAdd="onAdd" v-show="isShowComfilm"></v-confirm>
 	</div>
 </template>
 <script>
+	import Vue   from 'vue'
+	import axios from 'axios'
+	import {mapState, mapActions} from 'vuex'
 	import Confirm    from '@/components/confirm'
 	import SwiperLoop from '@/components/swiper-loop'
 
@@ -76,13 +79,20 @@
 		name : 'product',
 		data() {
 			return {
-				isShowComfilm : false
+				isShowComfilm : false,
+				product       : {
+					item : []
+				},
+				select_item : {}
 			}
 		},
 		components : {
 			'v-confirm'   : Confirm,
 			'swiper-loop' : SwiperLoop
 		},
+		computed : mapState({
+			token : state => state.User.token
+		}),
 		methods : {
 			toAdd() {
 				this.isShowComfilm = true
@@ -90,12 +100,44 @@
 			onClose() {
                 this.isShowComfilm = false
             },
-            onAdd() {
+            onAdd(count) {
             	this.isShowComfilm = false
-            	this.$router.push({path : '/cart'})
-            }
+            	const model = {
+					number   : count,
+					product  : this.product._id,
+					selected : this.select_item._id
+            	}
+            	console.log(model)
+            	// 提交服务器
+				axios.post(Vue.config.network + '/cart', model, {
+					headers : {
+						token : this.token
+					}
+				})
+				.then((response) => {
+					this.$router.push({path : '/cart'})
+				})
+				.catch((error) => {});
+            	
+            },
+            onChange(index) {
+            	if(this.product.item) {
+            		this.select_item = this.product.item[index];
+            	}
+            },
+			getProduct() {
+				// 获取商品列表
+				axios.get(Vue.config.network + '/product/' + this.$route.query._id)
+				.then((response) => {
+					console.log('response', response)
+					this.product = response.data;
+				})
+				.catch((error) => {});
+			},
+		},
+		created() {
+			this.getProduct();
 		}
-
 	}
 </script>
 <style>

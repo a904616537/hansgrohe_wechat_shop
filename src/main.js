@@ -5,16 +5,17 @@ import router      from './router'
 import VueRouter   from 'vue-router'
 import Vuex        from 'vuex'
 import vuexI18n    from 'vuex-i18n'
+import FastClick from 'fastclick';
 // import Cookie   from 'vue-cookie'
 import querystring from 'querystring'
 import Logo        from '@/components/logo'
 import Nav         from '@/components/nav'
 
-
+FastClick.attach(document.body)
 Vue.use(VueRouter)
 
 
-Vue.config.productionTip = false
+Vue.config.network = 'http://localhost:8130';
 Vue.component('v-logo',Logo)
 Vue.component('v-nav',Nav)
 
