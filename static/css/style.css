@@ -174,8 +174,29 @@ textarea:-ms-input-placeholder {
 }
 
 
-/*  index  */
+/* home */
 .home-content{
+	margin-top    : 10px;
+	margin-bottom : 100px;
+	padding       : 0 20px;
+	text-align    : left;
+}
+.home-img{
+	width : 100%;
+}
+.home .store{
+	color            : #fff;
+	background-color : #009F80;
+	position         : fixed;
+	bottom           : 0;
+	left             : 0;
+	right            : 0;
+	line-height      : 40px;
+}
+
+
+/*  shop  */
+.shop-content{
 	margin-top    : 10px;
 	margin-bottom : 60px;
 }

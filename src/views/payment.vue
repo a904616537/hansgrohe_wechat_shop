@@ -20,19 +20,10 @@
 			<!-- END 商品循环 -->
 		</div>
 		<div class="info-padding border-bottom">
-			安装
-			<div class="pick-input">
-				<div class="checked-input">
-					<input type="radio" id="yes" value="yes" v-model="picked">
-					<label for="one"></label>
-					<span>Yes</span>
-				</div>
-				<div class="checked-input">
-					<input type="radio" id="no" value="no" v-model="picked">
-					<label for="two"></label>
-					<span>No</span>
-				</div>
-			</div>
+			{{ $t('payment.install') }}
+			<p class="info-style">
+				{{ $t('payment.tips') }}
+			</p>
 		</div>
 		<div class="info-padding border-bottom clearfloat">
 			{{ $t('payment.address') }}<i class="iconfont float-right" @click="toAddress">&#xe622</i>

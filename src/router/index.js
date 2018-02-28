@@ -9,6 +9,7 @@ import Infomation  from '../views/infomation'
 import Payment     from '../views/payment'
 import Address     from '../views/address'
 import Profile     from '../views/profile'
+import Shop        from '../views/shop'
  
 Vue.use(Router)
 
@@ -40,6 +41,9 @@ var routers = [
 	},{
 		path      : '/profile',
 		component : Profile
+	},{
+		path      : '/shop',
+		component : Shop
 	}
 
 ]
