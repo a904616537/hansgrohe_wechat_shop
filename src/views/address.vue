@@ -15,7 +15,7 @@
 		<div class="address-content">
 			<div class="infomation">
 				<!-- 地址列表循环 -->
-				<v-address></v-address>
+				<v-address v-for="(address, index) in address_book" :data="address" :key="index" :index="index" :onSelect="onSelect"></v-address>
 
 			</div>
 		</div>
@@ -26,15 +26,21 @@
 	</div>
 </template>
 <script>
+	import Vue   from 'vue'
+	import axios from 'axios'
+	import {mapState, mapActions} from 'vuex'
 	import addresslist from '@/components/addressList'
 
 	export default{
 		name : 'hans-address',
 		data() {
 			return {
-				
+				address_book : []
 			}
 		},
+		computed : mapState({
+			token : state => state.User.token
+		}),
 		components : {
 			'v-address' : addresslist
 		},
@@ -42,7 +48,26 @@
 			addAddress() {
 				// 添加地址
 				console.log('add-address')
+			},
+			getAddress() {
+				axios.get(Vue.config.network + '/member/address', {
+					headers : { token : this.token }
+				})
+				.then((response) => this.address_book = response.data)
+				.catch((error) => {});
+			},
+			onSelect(index) {
+				axios.put(Vue.config.network + '/member/address', {index}, {
+					headers : { token : this.token }
+				})
+				.then((response) => this.$router.go(-1))
+				.catch((error) => {});
+
+				
 			}
+		},
+		created() {
+			this.getAddress();
 		}
 	}
 </script>

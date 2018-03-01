@@ -65,7 +65,7 @@
 		methods : {
 			checkout() {
 				if(this.select_item.length > 0) {
-					localStorage.setItem("checkoutList", this.select_item);
+					localStorage.setItem("checkoutList", JSON.stringify(this.select_item));
 					this.$router.push({path : '/payment'})
 				}
 			},

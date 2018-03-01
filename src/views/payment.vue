@@ -27,13 +27,13 @@
 		</div>
 		<div class="info-padding border-bottom clearfloat">
 			{{ $t('payment.address') }}<i class="iconfont float-right" @click="toAddress">&#xe622</i>
-			<p class="info-style">Shanghai jing 'an district kangding road 1018 from pavilion building the second floor</p>
-			<span class="payment-user">Amy Wang</span>
-			<span class="payment-user">155 0027 9072</span>
+			<p class="info-style">{{address.address}}</p>
+			<span class="payment-user">{{address.recipients}}</span>
+			<span class="payment-user">{{address.phone}}</span>
 		</div>
 		<div class="info-padding payment-msg">
 			{{ $t('payment.msg') }}
-			<textarea :placeholder="$t('payment.textarea')" class="payment-textarea" wrap="wrap"></textarea>
+			<textarea v-model="message" :placeholder="$t('payment.textarea')" class="payment-textarea" wrap="wrap"></textarea>
 		</div>
 		<div class="payment-bottom clearfloat">
 			<div class="btn-left float-left">{{ $t('payment.total') }} <span>$ {{total}}</span></div>
@@ -50,36 +50,52 @@
 		name : 'payment',
 		data() {
 			return {
-				picked : '',
-				total  : 0,
-				items  : []
+				arr     : JSON.parse(localStorage.getItem("checkoutList")),
+				message : '',
+				total   : 0,
+				items   : []
 			}
 		},
 		computed : mapState({
-			token : state => state.User.token
+			token   : state => state.User.token,
+			address : state => state.User.address
 		}),
 		methods : {
 			toAddress() {
 				this.$router.push({ path : '/address' })
 			},
 			order() {
-				this.$router.push({path : '/info'})
+				console.log('this.arr', this.arr)
+				const order = {
+					items     : this.items,
+					address   : this.address,
+					message   : this.message,
+					cart_item : this.arr,
+					total     : this.total
+				};
+				axios.post(Vue.config.network + '/order', order, {
+					headers : { token : this.token }
+				})
+				.then((response) => {
+					console.log('response', response);
+					this.$router.push({path : '/info', query : { order_id : response.data }})
+				})
+				.catch((error) => {});
 			},
 			getCheckout(arr) {
 				axios.post(Vue.config.network + '/cart/checkout', {arr}, {
 					headers : { token : this.token }
 				})
 				.then((response) => {
-					console.log('response', response)
-					this.total = response.data.total;
-					this.items = response.data.items;
+					this.total   = response.data.total;
+					this.items   = response.data.items;
+					this.$store.dispatch('SetAddress', response.data.address);
 				})
 				.catch((error) => {});
 			}
 		},
 		created() {
-			const arr = localStorage.getItem("checkoutList");
-			this.getCheckout(arr);
+			this.getCheckout(this.arr);
 		}
 	}
 </script>

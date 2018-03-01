@@ -6,7 +6,8 @@ const state = {
 	showFrom : false,
 	isLogin  : Cookie.get('user-token') != null,
 	user     : Cookie.get('user'),
-	token    : Cookie.get('user-token')
+	token    : Cookie.get('user-token'),
+	address  : {}
 }
 
 const actions = {
@@ -15,7 +16,10 @@ const actions = {
 	},
 	Logout({commit}, data) {
 		commit(types.USER_LOGOUT, data);
-	}
+	},
+	SetAddress({commit}, data) {
+		commit(types.USER_SET_ADDRESS, data);
+	},
 }
 
 // mutations
@@ -32,6 +36,9 @@ const mutations = {
 		state.user    = {};
 		Cookie.delete('user');
 		Cookie.delete('user-token');
+	},
+	[types.USER_SET_ADDRESS] (state, data) {
+		state.address = data;
 	}
 }
 
