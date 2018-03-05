@@ -12,14 +12,21 @@
 			<span>{{data.recipients}}</span>
 			<span>{{data.phone}}</span>
 		</div>
+		<v-alert v-show="isDel" :onConfirm="onConfirm" :onCancel="onCancel"></v-alert> 
 	</div>
 </template>
 <script>
+	import vAlert from '@/components/alert'
+
 	export default{
 		name : 'addresslist',
 		data() {
 			return {
+				isDel : false
 			}
+		},
+		components : {
+			'v-alert' : vAlert
 		},
 		props : {
 			index : {
@@ -38,11 +45,17 @@
 		methods : {
 			del() {
 				// 删除地址
-				console.log('del')
+				console.log('del');
+				this.isDel = !this.isDel
 			},
 			editor() {
 				// 编辑地址
 				console.log('editor')
+				this.$router.push({path : '/editor'})
+			},
+			onCancel() { 
+				// 取消删除
+				this.isDel = false
 			}
 		}
 	}

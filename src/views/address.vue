@@ -48,6 +48,7 @@
 			addAddress() {
 				// 添加地址
 				console.log('add-address')
+				this.$router.push({path : '/addAddress'})
 			},
 			getAddress() {
 				axios.get(Vue.config.network + '/member/address', {
