@@ -258,6 +258,9 @@ textarea:-ms-input-placeholder {
 	line-height : 25px;
 	text-align  : left;
 }
+.product-technology img {
+	width:  90%;
+}
 .product .iconfont{
 	color : #F5A540;
 }
@@ -320,8 +323,12 @@ textarea:-ms-input-placeholder {
 .product-bottom .product-btn:not(:last-child){
 	border-right : 1px solid #fff;
 }
-
-
+.ql-align-center {
+    text-align: center;
+}
+.ql-editor .ql-align-right {
+    text-align: right;
+}
 /*  cart  */
 .cart{
 	text-align : left;
@@ -637,6 +644,9 @@ textarea:-ms-input-placeholder {
 
 
 /*  order  */
+.order-content {
+	margin-bottom: 60px;
+}
 .order .order-list{
 	margin-bottom : 10px;
 }
@@ -647,6 +657,7 @@ textarea:-ms-input-placeholder {
 	right      : 0;
 	width      : 100%;
 	box-shadow : 0 2px 6px rgba(0,0,0,.4);
+	background-color: #fff;
 }
 .order .order-bottom .product-btn{
 	float       : left;
@@ -659,4 +670,10 @@ textarea:-ms-input-placeholder {
 .order .order-bottom .btn-right{
 	background-color : #009F80;
 	color            : #fff;
+}
+
+.imgbg {
+	background-size     : cover;
+	background-repeat   : no-repeat;
+	background-position : center;
 }

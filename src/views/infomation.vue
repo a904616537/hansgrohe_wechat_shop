@@ -5,7 +5,8 @@
 			<!-- 商品列表循环 -->
 			<div v-for="(item, index) in order.order_item" :key="index" class="info-head info-padding clearfloat">
 				<div class="cart-img float-left">
-					<img :src="item.img" alt="" class="img-style">
+					<div class="cart-img float-left imgbg" :style="{ 'background-image': 'url(' + item.img + ')' }"></div>
+					
 				</div>
 				<div class="inner float-left">
 					<div class="card-title">{{item.name}}</div>

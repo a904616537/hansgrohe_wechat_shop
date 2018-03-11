@@ -42,13 +42,13 @@
 </script>
 <style>
 	.swiper .inner{
+		width               : 100%;
+		height              : 214px;
 		background-color : #fff;
 		height           : 214px;
 		width            : 100%;
 	}
 	.swiper .imgbg{
-		width               : 100%;
-		height              : 214px;
 		background-size     : cover;
 		background-repeat   : no-repeat;
 		background-position : center;

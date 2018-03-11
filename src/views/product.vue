@@ -12,7 +12,9 @@
 				<span><i class="iconfont">&#xe676;</i> {{ $t('product.area') }}</span>
 			</div>
 		</div>
-		<div class="product-technology border-bottom">
+		<div class="product-technology border-bottom" v-html="product.content">
+		</div>
+		<!-- <div class="product-technology border-bottom">
 			<div class="card-title">{{ $t('product.technology') }}</div>
 			<div class="product-inner">
 				<span class="inner-text"><i class="iconfont icon-con">&#xe62d</i>{{ $t('product.technology1') }}</span>
@@ -51,7 +53,10 @@
 					<div class="inner-right">{{ $t('product.charact4') }}</div>
 				</div>	
 			</div>
-		</div>
+		</div> -->
+
+
+
 		<div class="product-award">
 			<div class="card-title">{{ $t('product.award') }}</div>
 			<div class="award-img">

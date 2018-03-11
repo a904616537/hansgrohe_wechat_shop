@@ -1,12 +1,13 @@
 <!--  购物车（单个商品）  -->
 <template>
-	<swipeout-item transition-mode="follow">
+	<swipeout-item transition-mode="follow" v-if="product">
 		<div slot="right-menu">
 			<swipeout-button @click.native="remove(index)" type="warn" style="margin-top: -1px;">{{$t('remove')}}</swipeout-button>
         </div>
 		<div slot="content" class="cart-inner clearfloat" :class="{ 'checked' : check}">
 			<div class="cart-check float-left" @click="onSelect(index)"><i class="iconfont cart-icon" :class="{ 'check-icon' : check}">&#xe663</i></div>
-			<img :src="product.img" alt="" class="cart-img float-left">
+			<div class="cart-img float-left imgbg" :style="{ 'background-image': 'url(' + product.img + ')' }">
+			</div>
 			<div class="inner-info float-left">
 				<div class="card-title">{{product.name}}</div>
 				<div class="card-info">{{product.desc}}</div>
@@ -67,7 +68,7 @@
 		computed : mapState({
 			token : state => state.User.token,
 			product() {
-				return this.data.product.item.find(val => this.data.selected == val._id)
+				return this.data.product.item.find(val => this.data.selected == val._id);
 			},
 			subtotal() {
 				return (this.count * this.product.price).toFixed(1);
@@ -116,6 +117,11 @@
 	}
 </script>
 <style>
+	.imgbg {
+		background-size     : cover;
+		background-repeat   : no-repeat;
+		background-position : center;
+	}
 	.cart .checked{
 		background-color : #EFEFF4;
 	}

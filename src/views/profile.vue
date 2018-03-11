@@ -15,14 +15,14 @@
 			</div>
 			<div class="card-inner">
 				<ul>
-					<li><router-link to="/order">{{ $t('profile.history') }}<span class="float-right">2</span></router-link></li>
-					<li><router-link to="/address">{{ $t('profile.address') }}<span class="float-right">2</span></router-link></li>
+					<li><router-link to="/order">{{ $t('profile.history') }}<span class="float-right">{{order_count}}</span></router-link></li>
+					<li><router-link to="/address">{{ $t('profile.address') }}<span class="float-right">{{user.address.length}}</span></router-link></li>
 					<li>{{ $t('profile.service') }}</li>
 					<li>{{ $t("login.language") }}<span class="under-line" @click="langeChange">{{lang}}</span></li>
 				</ul>
 			</div>
 		</div>
-		<div class="profile-bottom">
+		<div class="profile-bottom" @click="onLogout">
 			<i class="iconfont">&#xe61e</i>{{ $t('profile.logout') }}
 		</div>		
 	</div>
@@ -30,18 +30,27 @@
 <script>
 	import Vue                    from 'vue'
 	import {mapState, mapActions} from 'vuex'
+	import axios                  from 'axios'
 
 	export default{
 		name: 'profile',
 		data() {
 			return {
-				lang  : 'en' ? '中文' : 'English'
+				order_count : 0,
+				lang        : 'en' ? '中文' : 'English'
 			}
 		},
+		computed : mapState({
+			token : state => state.User.token,
+			user  : state => state.User.user
+		}),
 		methods : {
 			...mapActions([
 	            'SetLanguage'
 	        ]),
+	        onLogout() {
+
+	        },
 			langeChange() {
 				if(this.lang == 'English') {
 	        		this.lang = '中文';
@@ -53,6 +62,19 @@
 					this.SetLanguage('zh')
 				}
 			},
+			orderCount() {
+				axios.get(Vue.config.network + '/order/count', {
+					headers : { token : this.token }
+				})
+				.then((response) => {
+					console.log('response', response)
+					this.order_count = response.data.count;
+				})
+				.catch((error) => {});
+			}
+		},
+		created() {
+			this.orderCount();
 		}
 	}
 </script>

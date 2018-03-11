@@ -5,7 +5,7 @@ import Cookie      from 'vue-cookie';
 const state = {
 	showFrom : false,
 	isLogin  : Cookie.get('user-token') != null,
-	user     : Cookie.get('user'),
+	user     : JSON.parse(Cookie.get('user')),
 	token    : Cookie.get('user-token'),
 	address  : {}
 }
