@@ -103,7 +103,7 @@
 			},
 			toRegist() {
 				// 点击注册
-				
+				// this.$router.push({path : '/registe'})
 			},
 		}
 	}

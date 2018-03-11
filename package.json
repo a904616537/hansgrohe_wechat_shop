@@ -14,6 +14,8 @@
     "elements-ui": "0.0.3",
     "moment": "^2.20.1",
     "querystring": "^0.2.0",
+    "v-distpicker": "^1.0.16",
+    "v-loader": "0.0.0",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^3.1.2",
     "vue-cli": "^2.9.2",
