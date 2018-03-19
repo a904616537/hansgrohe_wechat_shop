@@ -20,11 +20,11 @@
 		props : {
 			onConfirm : {
 				type : Function,
-				default : () => console.log('del',yes)
+				default : () => console.log('del yes')
 			},
 			onCancel : {
 				type : Function,
-				default : () => console.log('del',no)
+				default : () => console.log('del no')
 			}
 		}
 	}
@@ -37,7 +37,7 @@
 		left             : 0;
 		right            : 0;
 		height           : 100%;
-		padding-top      : 70%;
+		padding-bottom   : 75%;
 	}
 	.alert .alert-inner{
 		text-align       : center;

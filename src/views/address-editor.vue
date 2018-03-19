@@ -16,13 +16,17 @@
 	</div>
 </template>
 <script>
+	import Vue   from 'vue'
+	import axios from 'axios'
+	import {mapState, mapActions} from 'vuex'
 	export default{
 		name: 'address-editor',
 		data() {
 			return {
-				delivery : '',
-				person   : '',
-				phone    : ''
+				title      : '',
+				address    : '',
+				recipients : '',
+				phone      : ''
 			}
 		},
 		watch : {
@@ -34,7 +38,21 @@
 			addAddress() {
 				// 保存添加新地址
 				console.log('save')
+			},
+			getAddress() {
+				axios.get(Vue.config.network + '/member/address', {
+					headers : { token : this.token }
+				})
+				.then((response) => {
+					if(response.data && response.data.length > this.$router.query.index) {
+						this.address = response.data[this.$router.query.index];
+					}
+				})
+				.catch((error) => {});
 			}
+		},
+		created() {
+			this.getAddress();
 		}
 	}
 </script>
@@ -55,7 +73,7 @@
 	.address-editor .item:last-child{
 		border-bottom : none;
 	}
-	.address-bottom {
+	.address-editor .address-bottom {
 		position         : fixed;
 		bottom           : 0;
 		left             : 0;

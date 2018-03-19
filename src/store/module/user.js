@@ -7,7 +7,8 @@ const state = {
 	isLogin  : Cookie.get('user-token') != null,
 	user     : JSON.parse(Cookie.get('user')),
 	token    : Cookie.get('user-token'),
-	address  : {}
+	address  : {},
+	wechat   : {}
 }
 
 const actions = {
@@ -16,6 +17,9 @@ const actions = {
 	},
 	Logout({commit}, data) {
 		commit(types.USER_LOGOUT, data);
+	},
+	SetWechatUser({commit}, data) {
+		commit(types.USER_SET_WECHAT, data);
 	},
 	SetAddress({commit}, data) {
 		commit(types.USER_SET_ADDRESS, data);
@@ -36,6 +40,9 @@ const mutations = {
 		state.user    = {};
 		Cookie.delete('user');
 		Cookie.delete('user-token');
+	},
+	[types.USER_SET_WECHAT] (state, data) {
+		state.wechat = data;
 	},
 	[types.USER_SET_ADDRESS] (state, data) {
 		state.address = data;

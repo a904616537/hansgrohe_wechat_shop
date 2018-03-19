@@ -75,12 +75,14 @@
 		"time"    : "Order Time"
 	},
 	"address" : {
-		"title"    : "Delivery Address",
-		"person"   : "Contact Person",
-		"phone"    : "Contact Number",
-		"btn"      : "Save",
-		"delivery" : "Please fill in the address",
-		"name"     : "Please fill in the name of the contact",
-		"number"   : "Please fill in the number of the contact"
+		"title"          : "Title",
+		"delivery_title" : "Delivery Address",
+		"person"         : "Contact Person",
+		"phone"          : "Contact Number",
+		"btn"            : "Save",
+		"address_title"  : "Please fill in the title",
+		"delivery"       : "Please fill in the address",
+		"name"           : "Please fill in the name of the contact",
+		"number"         : "Please fill in the number of the contact"
 	}
 }

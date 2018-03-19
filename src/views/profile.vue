@@ -11,12 +11,12 @@
 		<div class="profile-card">
 			<div class="profile-img">
 				<img src="static/imgs/user-img.png" alt="">
-				<div>188 0024 2709</div>
+				<div>{{user.phone}}</div>
 			</div>
 			<div class="card-inner">
 				<ul>
 					<li><router-link to="/order">{{ $t('profile.history') }}<span class="float-right">{{order_count}}</span></router-link></li>
-					<li><router-link to="/address">{{ $t('profile.address') }}<span class="float-right">{{user.address.length}}</span></router-link></li>
+					<li><router-link to="/address">{{ $t('profile.address') }}<span class="float-right">{{address_count}}</span></router-link></li>
 					<li>{{ $t('profile.service') }}</li>
 					<li>{{ $t("login.language") }}<span class="under-line" @click="langeChange">{{lang}}</span></li>
 				</ul>
@@ -36,20 +36,23 @@
 		name: 'profile',
 		data() {
 			return {
-				order_count : 0,
-				lang        : 'en' ? '中文' : 'English'
+				address_book : [],
+				order_count   : 0,
+				address_count : 0,
+				lang          : 'en' ? '中文' : 'English'
 			}
 		},
 		computed : mapState({
-			token : state => state.User.token,
-			user  : state => state.User.user
+			token  : state => state.User.token,
+			user   : state => state.User.user,
+			wechat : state => state.User.wechat
 		}),
 		methods : {
 			...mapActions([
 	            'SetLanguage'
 	        ]),
 	        onLogout() {
-
+	        	WeixinJSBridge.call('closeWindow');
 	        },
 			langeChange() {
 				if(this.lang == 'English') {
@@ -67,14 +70,24 @@
 					headers : { token : this.token }
 				})
 				.then((response) => {
-					console.log('response', response)
 					this.order_count = response.data.count;
+				})
+				.catch((error) => {});
+			},
+			addressCount() {
+				axios.get(Vue.config.network + '/member/address', {
+					headers : { token : this.token }
+				})
+				.then((response) => {
+					this.address_book = response.data;
+					this.address_count = response.data.length;
 				})
 				.catch((error) => {});
 			}
 		},
 		created() {
 			this.orderCount();
+			this.addressCount();
 		}
 	}
 </script>

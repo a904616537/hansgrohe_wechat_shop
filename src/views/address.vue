@@ -15,7 +15,13 @@
 		<div class="address-content">
 			<div class="infomation">
 				<!-- 地址列表循环 -->
-				<v-address v-for="(address, index) in address_book" :data="address" :key="index" :index="index" :onSelect="onSelect"></v-address>
+				<v-address
+				v-for="(address, index) in address_book"
+				:key="index"
+				:index="index"
+				:data="address"
+				:onSelect="onSelect"
+				:onDelete="onDelete"></v-address>
 
 			</div>
 		</div>
@@ -39,15 +45,18 @@
 			}
 		},
 		computed : mapState({
-			token : state => state.User.token
+			token : state => state.User.token,
+			user  : state => state.User.user
 		}),
 		components : {
 			'v-address' : addresslist
 		},
 		methods : {
+			...mapActions([
+	            'SetAddress'
+	        ]),
 			addAddress() {
 				// 添加地址
-				console.log('add-address')
 				this.$router.push({path : '/addAddress'})
 			},
 			getAddress() {
@@ -61,10 +70,20 @@
 				axios.put(Vue.config.network + '/member/address', {index}, {
 					headers : { token : this.token }
 				})
-				.then((response) => this.$router.go(-1))
+				.then((response) => {
+					this.$router.go(-1)
+				})
+				.catch((error) => {console.log('error', error)});
+			},
+			onDelete(index) {
+				console.log('onDelete', index)
+				axios.delete(Vue.config.network + '/member/address?index=' + index, {
+					headers : { token : this.token }
+				})
+				.then((response) => {
+					this.address_book.splice(index, 1);
+				})
 				.catch((error) => {});
-
-				
 			}
 		},
 		created() {

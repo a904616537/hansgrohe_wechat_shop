@@ -66,7 +66,7 @@
 		</div>
 		<div class="product-bottom">
 			<div class="product-btn" @click="toAdd">{{ $t('product.add') }}</div>
-			<div class="product-btn">{{ $t('product.buy') }}</div>
+			<div class="product-btn" @click="toAdd">{{ $t('product.buy') }}</div>
 		</div>
 
 		<!--  商品详情选择 弹框  -->

@@ -2,11 +2,15 @@
 	<div class="add">
 		<div class="item">
 			<div class="address-title">{{ $t('address.title')}}</div>
-			<input type="text" :placeholder="$t('address.delivery')" class="address-input" v-model="delivery">
+			<input type="text" :placeholder="$t('address.address_title')" class="address-input" v-model="title">
+		</div>
+		<div class="item">
+			<div class="address-title">{{ $t('address.delivery_title')}}</div>
+			<input type="text" :placeholder="$t('address.delivery')" class="address-input" v-model="address">
 		</div>
 		<div class="item">
 			<div class="address-title">{{ $t('address.person')}}</div>
-			<input type="text" :placeholder="$t('address.name')" class="address-input" v-model="person">
+			<input type="text" :placeholder="$t('address.name')" class="address-input" v-model="recipients">
 		</div>
 		<div class="item">
 			<div class="address-title">{{ $t('address.phone')}}</div>
@@ -16,15 +20,23 @@
 	</div>
 </template>
 <script>
+	import Vue   from 'vue'
+	import axios from 'axios'
+	import {mapState, mapActions} from 'vuex'
 	export default{
 		name: 'add',
 		data() {
 			return {
-				delivery : '',
-				person   : '',
-				phone    : ''
+				update     : false,
+				title      : '',
+				address    : '',
+				recipients : '',
+				phone      : ''
 			}
 		},
+		computed : mapState({
+			token : state => state.User.token
+		}),
 		watch : {
 			phone(newValue, oldValue) {
 				this.phone = newValue.length > oldValue.length ? newValue.replace(/\s/g, '').replace(/(\d{3})(\d{0,4})(\d{0,4})/, '$1 $2 $3') : this.phone.trim()
@@ -32,8 +44,41 @@
 		},
 		methods : {
 			addAddress() {
+
+				const model = {
+					index      : this.update?this.$route.query.index : -1,
+					title      : this.title,
+					address    : this.address,
+					recipients : this.recipients,
+					phone      : this.phone
+				}
 				// 保存添加新地址
-				console.log('save')
+				axios.post(Vue.config.network + '/member/address', model, {
+					headers : { token : this.token }
+				})
+				.then((response) => this.$router.go(-1))
+				.catch((error) => {});
+			},
+			getAddress(index) {
+				axios.get(Vue.config.network + '/member/address', {
+					headers : { token : this.token }
+				})
+				.then((response) => {
+					if(response.data && response.data.length > index) {
+						const address = response.data[index];
+						this.title      = address.title;
+						this.address    = address.address;
+						this.recipients = address.recipients;
+						this.phone      = address.phone;
+					}
+				})
+				.catch((error) => {});
+			}
+		},
+		created() {
+			if(typeof this.$route.query.index != 'undefined') {
+				this.update = true;
+				this.getAddress(this.$route.query.index);
 			}
 		}
 	}
@@ -58,7 +103,7 @@
 	.add .item:last-child{
 		border-bottom : none;
 	}
-	.address-bottom {
+	.add .address-bottom {
 		position         : fixed;
 		bottom           : 0;
 		left             : 0;

@@ -75,12 +75,14 @@
 		"time"    : "下单时间"
 	},
 	"address" : {
-		"title"    : "联系地址",
-		"person"   : "联系人",
-		"phone"    : "联系电话",
-		"btn"      : "保存",
-		"delivery" : "请填写地址",
-		"name"     : "请填写联系人姓名",
-		"number"   : "请填写联系人电话号码"
+		"title"          : "地址名称",
+		"delivery_title" : "联系地址",
+		"person"         : "联系人",
+		"phone"          : "联系电话",
+		"btn"            : "保存",
+		"address_title"  : "请填写地址名称",
+		"delivery"       : "请填写地址",
+		"name"           : "请填写联系人姓名",
+		"number"         : "请填写联系人电话号码"
 	}
 }

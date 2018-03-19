@@ -9,6 +9,7 @@
     import Vue                   from 'vue';
     import Cookie                from 'vue-cookie';
     import {mapState,mapActions} from 'vuex';
+    import axios                  from 'axios';
 
     export default {
         name: 'app',
@@ -22,8 +23,34 @@
         }),
         methods: {
             ...mapActions([
-                'SetLanguage'
+                'SetLanguage',
+                'SetWechatUser'
             ]),
+            onWechatLogin() {
+                //获取url中的参数
+                function getUrlParam(name) {
+                    const reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                    const r = window.location.search.substr(1).match(reg);
+                    if (r != null) return unescape(r[2]); return null;
+                }
+
+                const code = getUrlParam('code');
+                console.log('code', code)
+                if(code) {
+                    axios.get(Vue.config.network + '/wechat/oauth/login?code=' + code)
+                    .then((response) => {
+                        console.log('response', response)
+                        this.SetWechatUser(response.data);
+                    })
+                    .catch((error) => {
+                        console.log('error', error)
+                    });
+                }
+                
+            }
+        },
+        created() {
+            this.onWechatLogin();
         }
     }
 </script>

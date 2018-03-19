@@ -15,7 +15,9 @@ FastClick.attach(document.body)
 Vue.use(VueRouter)
 
 
-Vue.config.network = 'http://localhost:8130';
+// Vue.config.network = 'http://localhost:8230';
+Vue.config.network = 'http://testserver.eatisco.com';
+
 Vue.component('v-logo',Logo)
 Vue.component('v-nav',Nav)
 
