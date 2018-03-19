@@ -64,7 +64,7 @@
 				.then((response) => {
 					console.log('response', response)
 					this.getcode = response.data.code;
-					alert('your code!', response.data.code);
+					alert('your code!:' + response.data.code);
 				})
 				.catch((error) => {});
 				const time = 60;
