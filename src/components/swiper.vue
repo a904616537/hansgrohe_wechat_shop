@@ -1,6 +1,6 @@
  <!--  单页显示自动轮播效果，带下圆点点击切换  -->
 <template>
-    <div class="swiper">
+    <div class="swiper" style="height:214px;">
     	<swiper :options="swiperOption">
 	        <!-- <swiper-slide v-for="(img, index) in images" :key="index"> -->
 	        <swiper-slide><div class="inner imgbg" style="background-image: url('static/imgs/product-2.png')"></div></swiper-slide>
@@ -42,8 +42,6 @@
 </script>
 <style>
 	.swiper .inner{
-		width               : 100%;
-		height              : 214px;
 		background-color : #fff;
 		height           : 214px;
 		width            : 100%;
