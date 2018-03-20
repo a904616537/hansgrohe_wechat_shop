@@ -6,7 +6,7 @@
 		<div class="product-title clearfloat border-bottom">
 			<div class="product-left">
 				<span>{{ $t('product.no') }} {{product.product_no}}</span>
-				<span>{{ $t('product.surface') }} {{product.surface}}</span>
+				<!-- <span>{{ $t('product.surface') }} {{product.surface}}</span> -->
 			</div>
 			<div class="product-right">
 				<span><i class="iconfont">&#xe676;</i> {{ $t('product.area') }}</span>

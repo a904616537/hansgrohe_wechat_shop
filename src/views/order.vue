@@ -22,8 +22,8 @@
 
 		</div>
 		<div class="order-bottom">
-			<div class="product-btn btn-left" @click="onProgress">{{ $t('order.progress') }}</div>
-			<div class="product-btn btn-right" @click="onAllOrder">{{ $t('order.all') }}</div>
+			<div class="product-btn btn-left" :class="{'btn-right': filter }" @click="onProgress">{{ $t('order.progress') }}</div>
+			<div class="product-btn btn-left" :class="{'btn-right': !filter }" @click="onAllOrder">{{ $t('order.all') }}</div>
 		</div>
 	</div>
 </template>
