@@ -3,8 +3,7 @@
 		<!-- 商品数据 -->
 		<div v-for="(val, index) in products" class="home-card clearfloat">
 			<router-link :to="{path : '/product', query : { _id : val._id }}">
-				<div class="card-left imgbg" :style="{ 'background-image': 'url(' + val.item[0].img + ')' }">
-				</div>
+				<img :src="val.item[0].img" alt= "" class="card-left">
 			</router-link>
 			<div class="card-right">
 				<div class="card-title">{{val.item && val.item.length > 0 ? val.item[0].name : ""}}</div>
