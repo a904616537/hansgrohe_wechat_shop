@@ -10,7 +10,7 @@
 	    	<div class="sms pub-xs-input" @click="getCode" v-show="show">{{ $t('login.sms') }}</div>
 			<div class="sms pub-xs-input sms-time" v-show="!show">{{ count}} s</div>
 			<div class="login" @click="toLogin">{{ $t('login.login') }}</div>
-			<div class="regist under-line" @click="toRegist">{{ $t('login.regist') }}</div>
+			<!-- <div class="regist under-line" @click="toRegist">{{ $t('login.regist') }}</div> -->
 	    </div>
 	    <div class="language">
 			<p class="pub-language">{{ $t("login.language") }}<span class="under-line" @click="langeChange">{{lang}}</span></p>

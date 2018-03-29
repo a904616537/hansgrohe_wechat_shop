@@ -16,7 +16,8 @@ Vue.use(VueRouter)
 
 
 // Vue.config.network = 'http://localhost:8230';
-Vue.config.network = 'http://testserver.eatisco.com';
+Vue.config.network = 'http://filtration.hansgrohe.com.cn/server';
+// Vue.config.network = 'http://testserver.eatisco.com';
 
 Vue.component('v-logo',Logo)
 Vue.component('v-nav',Nav)

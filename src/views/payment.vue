@@ -37,14 +37,17 @@
 		</div>
 		<div class="payment-bottom clearfloat">
 			<div class="btn-left float-left">{{ $t('payment.total') }} <span>$ {{total}}</span></div>
-			<div class="btn-right float-right" @click="order">{{ $t('payment.payment') }}</div>
+			<div class="btn-right float-right" @click="onPayment">{{ $t('payment.payment') }}</div>
 		</div>
+		<v-comfilm :message="message" v-show="isShowComfilm" :onClose="onClose"></v-comfilm>
 	</div>
 </template>
 <script>
 	import Vue   from 'vue'
 	import axios from 'axios'
+	import moment from 'moment'
 	import {mapState, mapActions} from 'vuex'
+	import Confilm from '@/components/confilm'
 
 	export default{
 		name : 'payment',
@@ -53,20 +56,57 @@
 				arr     : JSON.parse(localStorage.getItem("checkoutList")),
 				message : '',
 				total   : 0,
-				items   : []
+				items   : [],
+				message : 'message',
+				isShowComfilm : false
 			}
 		},
+		components : {
+            'v-comfilm' : Confilm
+        },
 		computed : mapState({
 			token   : state => state.User.token,
-			address : state => state.User.address
+			address : state => state.User.address,
+			wechat  : state => state.User.wechat,
+			orderId() {
+                var str = "" + moment().unix(),
+                pad = "000000000",
+                _id = moment().format("YYYY") + moment().format("MM") + pad.substring(0, pad.length - str.length) + str;
+                return _id;
+            }
 		}),
 		methods : {
+			onClose() {
+				this.isShowComfilm = false;
+			},
 			toAddress() {
 				this.$router.push({ path : '/address' })
+			},
+			onPayment() {
+				let body = {order : this.orderId, total : this.total, open_id : this.wechat.openid};
+				axios.post(Vue.config.network + '/payment/wechat', body, {
+					headers : { token : this.token }
+				})
+				.then((response) => {
+					WeixinJSBridge.invoke('getBrandWCPayRequest', result, (res) => {
+                        if(res.err_msg == "get_brand_wcpay_request:ok"){
+                            this.order()
+                        // 这里可以跳转到订单完成页面向用户展示
+                        }else{
+                        	this.message = '支付失败，请重试'
+                        	this.isShowComfilm = true
+                        }
+                    });
+				})
+				.catch((error) => {
+					this.message = '微信支付调用失败！'
+					this.isShowComfilm = true
+				});
 			},
 			order() {
 				console.log('this.arr', this.arr)
 				const order = {
+					_id       : this._id,
 					items     : this.items,
 					address   : this.address,
 					message   : this.message,
