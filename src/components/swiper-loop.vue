@@ -32,7 +32,7 @@
 			data : {
 				type    : Array,
 				default : () => {
-					return [{img : 'static/imgs/filter.png', name : 'Tails Select S', price : 999}]
+					return [{img : 'shop/static/imgs/filter.png', name : 'Tails Select S', price : 999}]
 				}
 			},
 			onChange : {

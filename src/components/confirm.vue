@@ -42,7 +42,7 @@
 				type : Object,
 				default : () => {
 					return {
-						img : 'static/imgs/water-purifier.jpg',
+						img : 'shop/static/imgs/water-purifier.jpg',
 						price : 99.00,
 					}
 				}

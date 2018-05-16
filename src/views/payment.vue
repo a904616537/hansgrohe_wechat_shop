@@ -2,7 +2,7 @@
 <template>
 	<div class="payment infomation">
 		<div class="user-head">
-			<img src="static/imgs/user-img.png" alt="" class="user-img">
+			<img src="shop/static/imgs/user-img.png" alt="" class="user-img">
 		</div>
 		<div class="payment-content">
 			<!-- 商品循环 -->

@@ -4,8 +4,8 @@
 		<v-nav></v-nav>
 		<div class="address-head">
 			<div class="mask">
-				<img src="static/imgs/bg1.jpg" class="bg1" alt="">
-				<img src="static/imgs/bg1.jpg" class="bg1 blur" alt="">		
+				<img src="shop/static/imgs/bg1.jpg" class="bg1" alt="">
+				<img src="shop/static/imgs/bg1.jpg" class="bg1 blur" alt="">		
 			</div>
 		</div>
 		<div class="profile-card">

@@ -3,7 +3,7 @@
 	<div class="home">
 		<v-nav></v-nav>
 		<!-- 轮播图 -->
-		<img src="static/imgs/bg1.jpg" class="home-img" />
+		<img src="shop/static/imgs/bg1.jpg" class="home-img" />
 		<div class="home-content">
 			<!-- 品牌介绍 -->
 			<p>{{ $t('home.title') }}</p>

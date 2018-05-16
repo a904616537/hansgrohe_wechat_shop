@@ -3,9 +3,9 @@
     <div class="swiper" style="height:214px;">
     	<swiper :options="swiperOption">
 	        <!-- <swiper-slide v-for="(img, index) in images" :key="index"> -->
-	        <swiper-slide><div class="inner imgbg" style="background-image: url('static/imgs/product-2.png')"></div></swiper-slide>
-			<swiper-slide><div class="inner imgbg" style="background-image: url('static/imgs/product-3.png')"></div></swiper-slide>
-			<swiper-slide><div class="inner imgbg" style="background-image: url('static/imgs/product-4.png')"></div></swiper-slide>
+	        <swiper-slide><div class="inner imgbg" style="background-image: url('shop/static/imgs/product-2.png')"></div></swiper-slide>
+			<swiper-slide><div class="inner imgbg" style="background-image: url('shop/static/imgs/product-3.png')"></div></swiper-slide>
+			<swiper-slide><div class="inner imgbg" style="background-image: url('shop/static/imgs/product-4.png')"></div></swiper-slide>
 	        <div class="swiper-pagination" slot="pagination"></div>
 	    </swiper>
     </div>
