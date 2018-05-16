@@ -19,7 +19,7 @@ Vue.use(Router)
 
 var routers = [
 	{
-		path      : '/',
+		path      : '/shop',
 		component : Login
 	},{
 		path      : '/home',
