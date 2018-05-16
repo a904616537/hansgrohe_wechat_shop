@@ -46,7 +46,7 @@ var routers = [
 		path      : '/profile',
 		component : Profile
 	},{
-		path      : '/shop',
+		path      : '/store',
 		component : Shop
 	},{
 		path      : '/registe',

@@ -5,7 +5,7 @@
 			<div class="con"></div>
 			<ul>
 				<router-link to="/home"><li class="nav-list">{{ $t('nav.home') }}</li></router-link>
-				<router-link to="/shop"><li class="nav-list">{{ $t('nav.shopping') }}</li></router-link>
+				<router-link to="/store"><li class="nav-list">{{ $t('nav.shopping') }}</li></router-link>
 				<router-link to="/profile"><li class="nav-list">{{ $t('nav.user') }}</li></router-link>
 				<router-link to="/cart"><li class="nav-list">{{ $t('nav.cart') }}</li></router-link>
 			</ul>
