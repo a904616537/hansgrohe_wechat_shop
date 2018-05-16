@@ -10,7 +10,7 @@
 			<p>{{ $t('home.text1') }}</p>
 			<p>{{ $t('home.text2') }}</p>
 		</div>
-		<router-link to="/shop"><div class="store">{{ $t('home.enter') }}</div></router-link>
+		<router-link to="/store"><div class="store">{{ $t('home.enter') }}</div></router-link>
 	</div>
 </template>
 
