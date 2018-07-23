@@ -21,7 +21,7 @@
 			</div>
 			<div class="total clearfloat">
 				<div class="float-left">{{ $t('cart.total') }}</div>
-				<div class="float-right count">$ {{total}}</div>
+				<div class="float-right count">¥ {{total}}</div>
 			</div>
 		</div>
 		<div class="cart-bottom" :class="select_item.length == 0?'cart-btn-def':null" @click="checkout">{{ $t('cart.checkout') }}</div> 

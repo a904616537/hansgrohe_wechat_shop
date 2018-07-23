@@ -11,7 +11,7 @@
 				<div class="inner float-left">
 					<div class="card-title">{{item.name}}</div>
 					<div class="card-info">{{item.desc}}</div>
-					<div class="card-price">$ {{item.price}}</div>
+					<div class="card-price">¥ {{item.price}}</div>
 					<div class="float-right info-count">x {{item.number}}</div>
 				</div>
 			</div>
@@ -19,7 +19,7 @@
 		</div>
 		<div class="total clearfloat">
 			<div class="float-left">{{ $t('info.total') }}</div>
-			<div class="float-left info-count">$ {{order.total}}</div>
+			<div class="float-left info-count">¥ {{order.total}}</div>
 		</div>
 		<div class="delivery info-padding">
 			{{ $t('info.address') }}

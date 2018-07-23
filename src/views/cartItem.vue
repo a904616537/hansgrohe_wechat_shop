@@ -11,7 +11,7 @@
 			<div class="inner-info float-left">
 				<div class="card-title">{{product.name}}</div>
 				<div class="card-info">{{product.desc}}</div>
-				<div class="card-price">$ {{subtotal}}</div>
+				<div class="card-price">¥ {{subtotal}}</div>
 			</div>
 			<div class="num float-right" :class="{ 'check-num' : check }">
 				<div @click="increment">+</div>

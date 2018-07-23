@@ -13,7 +13,7 @@
 				<div class="inner float-left">
 					<div class="card-title">{{item.name}}</div>
 					<div class="card-info">{{item.desc}}</div>
-					<div class="card-price">$ {{item.price}}</div>
+					<div class="card-price">¥ {{item.price}}</div>
 					<div class="float-right info-count">x {{item.number}}</div>
 				</div>
 			</div>
@@ -36,7 +36,7 @@
 			<textarea v-model="message" :placeholder="$t('payment.textarea')" class="payment-textarea" wrap="wrap"></textarea>
 		</div>
 		<div class="payment-bottom clearfloat">
-			<div class="btn-left float-left">{{ $t('payment.total') }} <span>$ {{total}}</span></div>
+			<div class="btn-left float-left">{{ $t('payment.total') }} <span>¥ {{total}}</span></div>
 			<div class="btn-right float-right" @click="onPayment">{{ $t('payment.payment') }}</div>
 		</div>
 		<v-comfilm :message="message" v-show="isShowComfilm" :onClose="onClose"></v-comfilm>

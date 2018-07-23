@@ -11,7 +11,7 @@
   	class="swiper-loop clearfloat">
 	    <el-carousel-item v-for="(item, index) in data || []" :key="index">
 	    	<img :src="item.img" class="el-img">
-	    	<p class="swiper-text">{{item.name}}<span class="float-right">$ {{item.price}}</span></p>
+	    	<p class="swiper-text">{{item.name}}<span class="float-right">¥ {{item.price}}</span></p>
 	    </el-carousel-item>
   	</el-carousel>
 </template>

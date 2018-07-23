@@ -33,7 +33,7 @@ Vue.component('v-nav',Nav)
 Vue.use(vuexI18n.plugin, Store)
 Vue.i18n.add('zh', require('@/languages/zh.json'))
 Vue.i18n.add('en', require('@/languages/en.json'))
-Vue.i18n.set('en');
+Vue.i18n.set('zh');
 
 
 new Vue({

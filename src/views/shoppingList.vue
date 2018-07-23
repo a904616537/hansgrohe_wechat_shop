@@ -3,13 +3,15 @@
 		<!-- 商品数据 -->
 		<div v-for="(val, index) in products" class="home-card clearfloat">
 			<router-link :to="{path : '/product', query : { _id : val._id }}">
-				<img :src="val.item[0].img" alt= "" class="card-left">
+				<div class="card-left">
+					<img :src="val.item[0].img" alt= "" class="card-img">
+				</div>
 			</router-link>
 			<div class="card-right">
 				<div class="card-title">{{val.item && val.item.length > 0 ? val.item[0].name : ""}}</div>
 				<div class="card-info">{{val.item && val.item.length > 0 ? val.item[0].desc : ""}}</div>
 				<div class="card-bottom clearfloat">
-					<div class="card-price">$ {{val.item && val.item.length > 0 ? val.item[0].price : ""}}</div>
+					<div class="card-price">¥ {{val.item && val.item.length > 0 ? val.item[0].price : ""}}</div>
 					<div class="card-shop" :class="{'active-shop' : active}" @click="addToCard(val._id, val.item[0]._id)"><i class="iconfont ">&#xe726</i></div>
 				</div>
 			</div>

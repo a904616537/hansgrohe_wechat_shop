@@ -6,7 +6,7 @@
 				<div class="confirm-inner">
 					<img :src="data.img" alt= "" class="confirm-img">
 					<div class="confirm-icon" @click="onClose"><i class="iconfont confirm-icon">&#xe695</i></div>
-					<div class="card-price">$ {{data.price}}</div>
+					<div class="card-price">¥ {{data.price}}</div>
 					<!-- <div class="text-style">{{ $t('confirm.material') }}</div>
 					<select v-model="material" class="pub-input select-input">
 		                <option disabled value="">Surface: Chrome Plated</option>
