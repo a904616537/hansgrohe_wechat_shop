@@ -50,7 +50,7 @@
             }
         },
         created() {
-            // this.onWechatLogin();
+            this.onWechatLogin();
         }
     }
 </script>
