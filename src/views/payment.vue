@@ -87,7 +87,7 @@
 				axios.post(Vue.config.network + '/payment/wechat', body, {
 					headers : { token : this.token }
 				})
-				.then((response) => {
+				.then((result) => {
 					WeixinJSBridge.invoke('getBrandWCPayRequest', result, (res) => {
                         if(res.err_msg == "get_brand_wcpay_request:ok"){
                             this.order()
@@ -99,6 +99,7 @@
                     });
 				})
 				.catch((error) => {
+					console.log('error', error)
 					this.message = '微信支付调用失败！'
 					this.isShowComfilm = true
 				});
