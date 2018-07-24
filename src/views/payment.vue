@@ -88,6 +88,15 @@
 					headers : { token : this.token }
 				})
 				.then((result) => {
+					const data = {
+						appid     : result.appId,
+						timeStamp : result.timeStamp,
+						nonceStr  : result.nonceStr,
+						signType  : result.signType,
+						package   : result.package,
+						paySign   : result.paySign,
+						timestamp : result.timestamp
+					}
 					WeixinJSBridge.invoke('getBrandWCPayRequest', result, (res) => {
                         if(res.err_msg == "get_brand_wcpay_request:ok"){
                             this.order()
