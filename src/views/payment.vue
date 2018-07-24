@@ -88,17 +88,7 @@
 					headers : { token : this.token }
 				})
 				.then((result) => {
-					alert(JSON.stringify(result));
-					const data = {
-						appid     : result.appId,
-						timeStamp : result.timeStamp,
-						nonceStr  : result.nonceStr,
-						signType  : result.signType,
-						package   : result.package,
-						paySign   : result.paySign,
-						timestamp : result.timestamp
-					}
-					WeixinJSBridge.invoke('getBrandWCPayRequest', result, (res) => {
+					WeixinJSBridge.invoke('getBrandWCPayRequest', result.data, (res) => {
                         if(res.err_msg == "get_brand_wcpay_request:ok"){
                             this.order()
                         // 这里可以跳转到订单完成页面向用户展示
