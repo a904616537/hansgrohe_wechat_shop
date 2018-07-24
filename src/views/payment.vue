@@ -88,6 +88,7 @@
 					headers : { token : this.token }
 				})
 				.then((result) => {
+					alert(JSON.stringify(result));
 					const data = {
 						appid     : result.appId,
 						timeStamp : result.timeStamp,
