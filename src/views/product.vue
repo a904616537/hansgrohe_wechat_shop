@@ -57,13 +57,13 @@
 
 
 
-		<div class="product-award">
+		<!-- <div class="product-award">
 			<div class="card-title">{{ $t('product.award') }}</div>
 			<div class="award-img">
 				<img src="static/imgs/award-1.png" alt="" class="img-style">
 				<img src="static/imgs/award-2.png" alt="" class="img-style">
 			</div>
-		</div>
+		</div> -->
 		<div class="product-bottom">
 			<div class="product-btn" @click="toAdd">{{ $t('product.add') }}</div>
 			<div class="product-btn" @click="toAdd">{{ $t('product.buy') }}</div>

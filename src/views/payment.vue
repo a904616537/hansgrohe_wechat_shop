@@ -19,12 +19,12 @@
 			</div>
 			<!-- END 商品循环 -->
 		</div>
-		<div class="info-padding border-bottom">
+		<!-- <div class="info-padding border-bottom">
 			{{ $t('payment.install') }}
 			<p class="info-style">
 				{{ $t('payment.tips') }}
 			</p>
-		</div>
+		</div> -->
 		<div class="info-padding border-bottom clearfloat">
 			{{ $t('payment.address') }}<i class="iconfont float-right" @click="toAddress">&#xe622</i>
 			<p class="info-style">{{address.address}}</p>
@@ -88,6 +88,7 @@
 					headers : { token : this.token }
 				})
 				.then((result) => {
+					console.log('onpayment', result.data)
 					WeixinJSBridge.invoke('getBrandWCPayRequest', result.data, (res) => {
                         if(res.err_msg == "get_brand_wcpay_request:ok"){
                             this.order()
