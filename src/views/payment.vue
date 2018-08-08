@@ -89,7 +89,8 @@
 					this.isShowComfilm = true;
 					return;
 				}
-				if(!this.address.address || !this.address.recipients || this.address.phone) {
+				console.log('this.address', this.address)
+				if(!this.address.address || !this.address.recipients || !this.address.phone) {
 					this.messagetext = '请填写正确的地址信息';
 					this.isShowComfilm = true;
 					return;
