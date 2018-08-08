@@ -25,8 +25,8 @@
 				{{ $t('payment.tips') }}
 			</p>
 		</div> -->
-		<div class="info-padding border-bottom clearfloat">
-			{{ $t('payment.address') }}<i class="iconfont float-right" @click="toAddress">&#xe622</i>
+		<div class="info-padding border-bottom clearfloat" @click="toAddress">
+			{{ $t('payment.address') }}<i class="iconfont float-right">&#xe622</i>
 			<p class="info-style">{{address.address}}</p>
 			<span class="payment-user">{{address.recipients}}</span>
 			<span class="payment-user">{{address.phone}}</span>
@@ -39,7 +39,7 @@
 			<div class="btn-left float-left">{{ $t('payment.total') }} <span>¥ {{total}}</span></div>
 			<div class="btn-right float-right" @click="onPayment">{{ $t('payment.payment') }}</div>
 		</div>
-		<v-comfilm :message="message" v-show="isShowComfilm" :onClose="onClose"></v-comfilm>
+		<v-comfilm :message="messagetext" v-show="isShowComfilm" :onClose="onClose"></v-comfilm>
 	</div>
 </template>
 <script>
@@ -54,7 +54,7 @@
 		data() {
 			return {
 				arr     : JSON.parse(localStorage.getItem("checkoutList")),
-				message : '',
+				messagetext : '',
 				total   : 0,
 				items   : [],
 				message : 'message',
@@ -84,6 +84,17 @@
 			},
 			onPayment() {
 				let body = {order : this.orderId, total : this.total, open_id : this.wechat.openid};
+				if(this.items.length == 0) {
+					this.messagetext = '请从购物车选择商品进行购买！';
+					this.isShowComfilm = true;
+					return;
+				}
+				if(!this.address.address || !this.address.recipients || this.address.phone) {
+					this.messagetext = '请填写正确的地址信息';
+					this.isShowComfilm = true;
+					return;
+				}
+
 				axios.post(Vue.config.network + '/payment/wechat', body, {
 					headers : { token : this.token }
 				})
@@ -94,19 +105,18 @@
                             this.order()
                         // 这里可以跳转到订单完成页面向用户展示
                         }else{
-                        	this.message = '支付失败，请重试'
+                        	this.messagetext = '支付失败，请重试'
                         	this.isShowComfilm = true
                         }
                     });
 				})
 				.catch((error) => {
 					console.log('error', error)
-					this.message = '微信支付调用失败！'
+					this.messagetext = '微信支付调用失败！'
 					this.isShowComfilm = true
 				});
 			},
 			order() {
-				console.log('this.arr', this.arr)
 				const order = {
 					_id       : this._id,
 					items     : this.items,
@@ -119,7 +129,6 @@
 					headers : { token : this.token }
 				})
 				.then((response) => {
-					console.log('response', response);
 					this.$router.push({path : '/info', query : { order_id : response.data }})
 				})
 				.catch((error) => {});
