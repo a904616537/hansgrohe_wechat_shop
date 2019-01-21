@@ -83,6 +83,7 @@
 				this.$router.push({ path : '/address' })
 			},
 			onPayment() {
+
 				let body = {order : this.orderId, total : this.total, open_id : this.wechat.openid};
 				if(this.items.length == 0) {
 					this.messagetext = '请从购物车选择商品进行购买！';
@@ -139,6 +140,7 @@
 					headers : { token : this.token }
 				})
 				.then((response) => {
+					console.log('response payment', response.data.items)
 					this.total   = response.data.total;
 					this.items   = response.data.items;
 					this.$store.dispatch('SetAddress', response.data.address);
